@@ -1,6 +1,6 @@
 # React Todo App with Notifications API and Cypress Tests
 
-This repository contains a Todo application built using React and Cypress for testing. The app allows you to manage your tasks with features such as adding, deleting, appending, and pausing tasks. It also leverages the Notifications API to provide timely reminders and notifications for your tasks.
+This repository contains a Todo application built using React, Cypress, Vite, and Tailwind CSS. The app allows you to manage your tasks with features such as adding, deleting, appending, and pausing tasks. It also leverages the Notifications API to provide timely reminders and notifications for your tasks.
 
 ## Key Features
 
@@ -9,6 +9,8 @@ This repository contains a Todo application built using React and Cypress for te
 - **Cypress:** The repository includes Cypress, a powerful end-to-end testing framework for web applications. It allows you to write comprehensive and reliable tests to ensure the functionality and stability of your Todo app.
 
 - **Vite:** The project utilizes Vite, a fast and efficient build tool for modern web applications. Vite offers a highly optimized development experience by leveraging ES module imports and providing instant feedback during development.
+
+- **Tailwind CSS:** The Todo app utilizes Tailwind CSS, a utility-first CSS framework. It provides a set of pre-defined utility classes that allow you to quickly style and customize your components.
 
 - **Notifications API:** The Todo app integrates the Notifications API to provide notifications and reminders for your tasks. You'll receive timely alerts, keeping you informed about upcoming or overdue tasks.
 
@@ -21,7 +23,7 @@ To get started with the Todo app, follow these steps:
 1. Clone the repository to your local machine using the following command:
 
    ```bash
-   git clone https://github.com/your-username/your-repo.git
+   git clone https://github.com/abdelrahmanahmed20021/NOTY-TASK.git
    ```
 
 2. Navigate to the project directory:

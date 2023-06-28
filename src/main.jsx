@@ -1,7 +1,12 @@
 import ReactDOM from "react-dom/client";
 import { App } from "./App";
 import "./styles/index.css";
+import { ContextState } from "./context/ContextState";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-root.render(<App />);
+root.render(
+  <ContextState>
+    <App />
+  </ContextState>
+);
