@@ -58,7 +58,7 @@ TASKLLIZAI is a web application built using React with React Router, React Icons
   </tr>
   <tr>
     <td>React Router</td>
-    <td>Library for handling routing in a React application. <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/reactrouter/reactrouter-plain.svg" alt="React Router"></td>
+    <td>Library for handling routing in a React application. <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/reactrouterdom/reactrouterdom-plain.svg" alt="React Router"></td>
   </tr>
   <tr>
     <td>Tailwind CSS</td>
@@ -66,7 +66,7 @@ TASKLLIZAI is a web application built using React with React Router, React Icons
   </tr>
   <tr>
     <td>Cypress</td>
-    <td>JavaScript end-to-end testing framework for web applications. <img src="https://example.com/path/to/cypress-logo.png" alt="Cypress"></td>
+    <td>JavaScript end-to-end testing framework for web applications. <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cypress/cypress-plain.svg" alt="Cypress"></td>
   </tr>
 <table/>
 
