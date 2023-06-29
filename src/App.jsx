@@ -50,7 +50,7 @@ export const App = () => {
   };
   return (
     <section className="h-screen bg-slate-500 flex justify-center items-center">
-      <div className="w-1/2   bg-white h-4/6  flex-col mx-auto rounded-md relative flex p-10">
+      <div className="w-max  bg-white h-max  flex-col mx-auto rounded-md relative flex p-10">
         <div className="text-bold flex items-center">
           <Link to={"/"}>
             <h3 className="underline cursor-pointer">Home</h3>
@@ -92,7 +92,7 @@ export const App = () => {
           </div>
           <div>
             <div className="flex m-10 gap-10">
-              <Link to={"complete"}>
+              <Link to={"complete"} data-id="complete-route">
                 <div className="flex items-center cursor-pointer gap-3 text-green-500">
                   <AiOutlineFileDone />({completeList.length})
                 </div>
@@ -146,6 +146,7 @@ export const App = () => {
                 <div className="flex gap-5">
                   <button
                     onClick={() => completeTask(e)}
+                    data-id="complete-button"
                     className="w-5 h-5 text-2xl text-green-500"
                   >
                     <AiOutlineFileDone />
