@@ -72,7 +72,7 @@ TASKLLIZAI is a web application built using React with React Router, React Icons
     <td>Cypress</td>
     <td>JavaScript end-to-end testing framework for web applications. <img src="https://example.com/path/to/cypress-logo.png" alt="Cypress"></td>
   </tr>
-</
+<table/>
 
 table>
 
