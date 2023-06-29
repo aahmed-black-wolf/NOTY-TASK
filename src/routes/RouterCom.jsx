@@ -4,6 +4,7 @@ import { CompleteTask } from "../components/completeTask";
 import { App } from "../App";
 import { useGState } from "../context/ContextState";
 import { Delete } from "../components/Delete";
+import { Pause } from "../components/Pause";
 
 export const RouterCom = () => {
   const { completeList } = useGState();
@@ -16,6 +17,7 @@ export const RouterCom = () => {
             element={<CompleteTask data={completeList} />}
           />
           <Route path="delete" element={<Delete />} />
+          <Route path="pause" element={<Pause />} />
         </Route>
       </Routes>
     </BrowserRouter>

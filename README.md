@@ -1,65 +1,111 @@
-# React Todo App with Notifications API and Cypress Tests
+# TASKLLIZAI Web Application
 
-This repository contains a Todo application built using React, Cypress, Vite, and Tailwind CSS. The app allows you to manage your tasks with features such as adding, deleting, appending, and pausing tasks. It also leverages the Notifications API to provide timely reminders and notifications for your tasks.
+## Description
 
-## Key Features
+TASKLLIZAI is a web application built using React with React Router, React Icons, Tailwind CSS, Cypress, and other technologies. It allows users to manage tasks, including adding, deleting, recovering, completing, and clearing tasks. The application also utilizes the Context API and LocalStorage API to manage data. Additionally, it provides toast notifications for invalid data inputs or any errors, and it sends reminders before 30 minutes of a task's ending time.
 
-- **React:** The application is developed using React, a popular JavaScript library for building user interfaces. It offers a modular and efficient approach to creating interactive components.
+## Features
 
-- **Cypress:** The repository includes Cypress, a powerful end-to-end testing framework for web applications. It allows you to write comprehensive and reliable tests to ensure the functionality and stability of your Todo app.
+<table>
+  <tr>
+    <th>Feature</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>1. Add Task</td>
+    <td>Users can add new tasks to the application.</td>
+  </tr>
+  <tr>
+    <td>2. Delete Task with Route Page Recovery</td>
+    <td>Users can delete tasks, and the application provides a route page to recover deleted tasks.</td>
+  </tr>
+  <tr>
+    <td>3. Complete Task with Route Page Deletion</td>
+    <td>Users can mark tasks as completed, and the application automatically deletes completed tasks and provides a route page to view deleted tasks.</td>
+  </tr>
+  <tr>
+    <td>4. Delete Task</td>
+    <td>Users can permanently delete tasks without the option to recover.</td>
+  </tr>
+  <tr>
+    <td>5. Clear Data and Locate All Data</td>
+    <td>Users can clear all data and locate all existing tasks.</td>
+  </tr>
+  <tr>
+    <td>6. Data Management with Context API and LocalStorage</td>
+    <td>The application utilizes the Context API and LocalStorage API to manage task data.</td>
+  </tr>
+  <tr>
+    <td>7. Toast Notifications</td>
+    <td>Users receive toast notifications for invalid data inputs or any errors that occur.</td>
+  </tr>
+  <tr>
+    <td>8. Task Ending Time Notifications</td>
+    <td>Users receive notifications before 30 minutes of a task's ending time.</td>
+  </tr>
+</table>
 
-- **Vite:** The project utilizes Vite, a fast and efficient build tool for modern web applications. Vite offers a highly optimized development experience by leveraging ES module imports and providing instant feedback during development.
+## Technology
 
-- **Tailwind CSS:** The Todo app utilizes Tailwind CSS, a utility-first CSS framework. It provides a set of pre-defined utility classes that allow you to quickly style and customize your components.
+<table>
+  <tr>
+    <th>Technology</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>React</td>
+    <td>JavaScript library for building user interfaces. <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React"></td>
+  </tr>
+  <tr>
+    <td>React Router</td>
+    <td>Library for handling routing in a React application. <img src="https://example.com/path/to/react-router-logo.png" alt="React Router"></td>
+  </tr>
+  <tr>
+    <td>React Icons</td>
+    <td>Library providing a collection of customizable icons for React. <img src="https://example.com/path/to/react-icons-logo.png" alt="React Icons"></td>
+  </tr>
+  <tr>
+    <td>Tailwind CSS</td>
+    <td>Utility-first CSS framework for rapidly building custom user interfaces. <img src="https://example.com/path/to/tailwind-css-logo.png" alt="Tailwind CSS"></td>
+  </tr>
+  <tr>
+    <td>Cypress</td>
+    <td>JavaScript end-to-end testing framework for web applications. <img src="https://example.com/path/to/cypress-logo.png" alt="Cypress"></td>
+  </tr>
+</
 
-- **Notifications API:** The Todo app integrates the Notifications API to provide notifications and reminders for your tasks. You'll receive timely alerts, keeping you informed about upcoming or overdue tasks.
+table>
 
-- **Task Management:** The app enables you to add, delete, append, and pause tasks. You can easily create new tasks, remove completed or unnecessary tasks, append additional information or subtasks, and pause tasks that require a temporary hold.
+## Installation and Setup
 
-## Getting Started
+To set up and run TASKLLIZAI locally, follow these steps:
 
-To get started with the Todo app, follow these steps:
+1. Clone the repository: `git clone https://github.com/your-username/TASKLLIZAI.git`
+2. Change to the project directory: `cd TASKLLIZAI`
+3. Install the dependencies: `npm install`
+4. Start the development server: `npm start`
 
-1. Clone the repository to your local machine using the following command:
+The application will be accessible at `http://localhost:3000` in your browser.
 
-   ```bash
-   git clone https://github.com/abdelrahmanahmed20021/NOTY-TASK.git
-   ```
+## Testing
 
-2. Navigate to the project directory:
+To run end-to-end tests using Cypress, execute the following steps:
 
-   ```bash
-   cd your-repo
-   ```
+1. Ensure that the development server is running.
+2. Open a new terminal window.
+3. Change to the project directory if not already in it: `cd TASKLLIZAI`
+4. Run the Cypress tests: `npm run test:e2e`
 
-3. Install the dependencies:
-
-   ```bash
-   npm install
-   ```
-
-4. Start the development server:
-
-   ```bash
-   npm run dev
-   ```
-
-5. Open your browser and visit `http://localhost:3000` to access the Todo app.
-
-## Running Tests
-
-To run the Cypress tests, make sure the development server is running, and then use the following command:
-
-```bash
-npm run test
-```
-
-This command will launch the Cypress test runner, allowing you to run the tests and view the results.
+Cypress will open and execute the tests in a separate window.
 
 ## Contributing
 
-Contributions are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request. Make sure to follow the existing coding style and conventions.
+Contributions to TASKLLIZAI are welcome! If you find any bugs or have suggestions for additional features, please open an issue or submit a pull request to the repository.
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the [MIT License](https://opensource.org/licenses/MIT). You are free to use, modify, and distribute the code for personal and commercial purposes.
+
+## Acknowledgements
+
+The TASKLLIZAI application was created by **_Abdelrhman Ahmed_**

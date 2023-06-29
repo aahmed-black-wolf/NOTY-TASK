@@ -1,6 +1,17 @@
 import React from "react";
 import { AiFillDelete } from "react-icons/ai";
+import { useComplete } from "../hooks/useComplete";
+import { useGState } from "../context/ContextState";
 export const CompleteTask = ({ data }) => {
+  const { setCompleteList, completeList } = useGState();
+  const deleteTask = (data) => {
+    useComplete(
+      completeList.filter((e) => data != e),
+      true
+    );
+    setCompleteList(completeList.filter((e) => data != e));
+  };
+
   return (
     data &&
     data?.map((e) => (
@@ -13,7 +24,10 @@ export const CompleteTask = ({ data }) => {
           <div className="text-cyan-500 font-semibold text-lg">{e.date}</div>
         </div>
         <div className="flex gap-5">
-          <button className="w-5 h-5 text-2xl text-red-500">
+          <button
+            onClick={() => deleteTask(e)}
+            className="w-5 h-5 text-2xl text-red-500"
+          >
             <AiFillDelete />
           </button>
         </div>

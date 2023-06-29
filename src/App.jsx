@@ -10,6 +10,7 @@ import { useGState } from "./context/ContextState";
 import { useComplete } from "./hooks/useComplete";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import { useDelete } from "./hooks/useDelete";
+import { usePause } from "./hooks/usePause";
 
 export const App = () => {
   const [id, setId] = useState(new Date().getTime());
@@ -23,6 +24,8 @@ export const App = () => {
     setDeleteList,
     completeList,
     deleteList,
+    pauseList,
+    setPauseList,
   } = useGState();
 
   const appendTask = () => {
@@ -67,6 +70,11 @@ export const App = () => {
     useDelete(data);
   };
 
+  const pauseTask = (data) => {
+    restMainList(data);
+    setPauseList((prop) => [data, ...prop]);
+    usePause(data);
+  };
   return (
     <section className="h-screen bg-slate-500 flex justify-center items-center">
       <div className="w-max  bg-white h-max  flex-col mx-auto rounded-md relative flex p-10">
@@ -121,10 +129,11 @@ export const App = () => {
                   <AiFillDelete />({deleteList.length})
                 </div>
               </Link>
-              <div className="flex items-center cursor-pointer gap-3 text-yellow-300">
-                <BsFillPauseFill />
-                (1)
-              </div>
+              <Link to={"pause"}>
+                <div className="flex items-center cursor-pointer gap-3 text-yellow-300">
+                  <BsFillPauseFill />({pauseList.length})
+                </div>
+              </Link>
             </div>
           </div>
           <button
@@ -172,7 +181,10 @@ export const App = () => {
                   >
                     <AiOutlineFileDone />
                   </button>
-                  <button className="w-5 h-5 text-2xl text-yellow-300 ">
+                  <button
+                    onClick={() => pauseTask(e)}
+                    className="w-5 h-5 text-2xl text-yellow-300 "
+                  >
                     <BsFillPauseFill />
                   </button>
                   <button
