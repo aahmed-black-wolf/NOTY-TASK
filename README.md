@@ -54,19 +54,19 @@ TASKLLIZAI is a web application built using React with React Router, React Icons
   </tr>
   <tr>
     <td>React</td>
-    <td>JavaScript library for building user interfaces. <img width="30px" height="30px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React"></td>
+    <td><img width="30px" height="30px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React"></td>
   </tr>
   <tr>
     <td>React Router</td>
-    <td>Library for handling routing in a React application. <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/reactrouterdom/reactrouterdom-plain.svg" alt="React Router"></td>
+    <td><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React Router"></td>
   </tr>
   <tr>
     <td>Tailwind CSS</td>
-    <td>Utility-first CSS framework for rapidly building custom user interfaces. <img width="40px" height="40px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg" alt="Tailwind CSS"></td>
+    <td> <img width="40px" height="40px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg" alt="Tailwind CSS"></td>
   </tr>
   <tr>
     <td>Cypress</td>
-    <td>JavaScript end-to-end testing framework for web applications. <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cypress/cypress-plain.svg" alt="Cypress"></td>
+    <td> <img  width="100px" height="40px" src="https://raw.githubusercontent.com/cypress-io/cypress/develop/assets/cypress-logo-dark.png" alt="Cypress"></td>
   </tr>
 <table/>
 
