@@ -58,7 +58,7 @@ TASKLLIZAI is a web application built using React with React Router, React Icons
   </tr>
   <tr>
     <td>React Router</td>
-    <td><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React Router"></td>
+    <td><img width="30px" height="30px"  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React Router"></td>
   </tr>
   <tr>
     <td>Tailwind CSS</td>
