@@ -54,19 +54,15 @@ TASKLLIZAI is a web application built using React with React Router, React Icons
   </tr>
   <tr>
     <td>React</td>
-    <td>JavaScript library for building user interfaces. <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React"></td>
+    <td>JavaScript library for building user interfaces. <img width="30px" height="30px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React"></td>
   </tr>
   <tr>
     <td>React Router</td>
-    <td>Library for handling routing in a React application. <img src="https://example.com/path/to/react-router-logo.png" alt="React Router"></td>
-  </tr>
-  <tr>
-    <td>React Icons</td>
-    <td>Library providing a collection of customizable icons for React. <img src="https://example.com/path/to/react-icons-logo.png" alt="React Icons"></td>
+    <td>Library for handling routing in a React application. <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/reactrouter/reactrouter-plain.svg" alt="React Router"></td>
   </tr>
   <tr>
     <td>Tailwind CSS</td>
-    <td>Utility-first CSS framework for rapidly building custom user interfaces. <img src="https://example.com/path/to/tailwind-css-logo.png" alt="Tailwind CSS"></td>
+    <td>Utility-first CSS framework for rapidly building custom user interfaces. <img width="40px" height="40px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg" alt="Tailwind CSS"></td>
   </tr>
   <tr>
     <td>Cypress</td>
