@@ -55,20 +55,14 @@ TASKLLIZAI is a web application built using React with React Router, React Icons
   <tr>
     <td>React</td>
     <td><img width="30px" height="30px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React"></td>
-  </tr>
-  <tr>
     <td>React Router</td>
-    <td><img width="30px" height="30px"  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React Router"></td>
-  </tr>
-  <tr>
+    <td><img width="30px" height="30px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React Router"></td>
     <td>Tailwind CSS</td>
-    <td> <img width="40px" height="40px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg" alt="Tailwind CSS"></td>
-  </tr>
-  <tr>
+    <td><img width="40px" height="40px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg" alt="Tailwind CSS"></td>
     <td>Cypress</td>
-    <td> <img  width="100px" height="40px" src="https://raw.githubusercontent.com/cypress-io/cypress/develop/assets/cypress-logo-dark.png" alt="Cypress"></td>
+    <td><img width="100px" height="40px" src="https://raw.githubusercontent.com/cypress-io/cypress/develop/assets/cypress-logo-dark.png" alt="Cypress"></td>
   </tr>
-<table/>
+</table>
 
 table>
 
