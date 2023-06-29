@@ -30,6 +30,7 @@ export const Delete = () => {
         </div>
         <div className="flex gap-5">
           <button
+            data-id="recover-button"
             onClick={() => reBack(e)}
             className="w-5 h-5 text-2xl text-red-500"
           >

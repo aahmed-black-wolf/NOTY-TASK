@@ -1,3 +1,3 @@
-Cypress.Commands.add("getByTestId", (id) => {
+Cypress.Commands.add("gtId", (id) => {
   cy.get(`[data-id=${id}]`);
 });

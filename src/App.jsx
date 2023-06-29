@@ -71,7 +71,7 @@ export const App = () => {
     <section className="h-screen bg-slate-500 flex justify-center items-center">
       <div className="w-max  bg-white h-max  flex-col mx-auto rounded-md relative flex p-10">
         <div className="text-bold flex items-center">
-          <Link to={"/"}>
+          <Link to={"/"} data-id="home-route">
             <h3 className="underline cursor-pointer">Home</h3>
           </Link>
           {baseUrl.pathname != "/" && <MdArrowRight />}
@@ -116,7 +116,7 @@ export const App = () => {
                   <AiOutlineFileDone />({completeList.length})
                 </div>
               </Link>
-              <Link to={"delete"}>
+              <Link data-id="delete-route" to={"delete"}>
                 <div className="flex items-center cursor-pointer gap-3 text-red-400">
                   <AiFillDelete />({deleteList.length})
                 </div>
@@ -178,6 +178,7 @@ export const App = () => {
                   <button
                     onClick={() => deleteTask(e)}
                     className="w-5 h-5 text-2xl text-red-500"
+                    data-id="deleter-button"
                   >
                     <AiFillDelete />
                   </button>
