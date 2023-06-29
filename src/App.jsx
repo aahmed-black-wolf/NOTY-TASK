@@ -9,13 +9,21 @@ import { useAppender } from "./hooks/useAppender";
 import { useGState } from "./context/ContextState";
 import { useComplete } from "./hooks/useComplete";
 import { Link, Outlet, useLocation } from "react-router-dom";
+import { useDelete } from "./hooks/useDelete";
 
 export const App = () => {
   const [id, setId] = useState(new Date().getTime());
   const input_data = useRef();
   const baseUrl = useLocation();
   const input_date = useRef();
-  const { mainList, setMainList, setCompleteList, completeList } = useGState();
+  const {
+    mainList,
+    setMainList,
+    setCompleteList,
+    setDeleteList,
+    completeList,
+    deleteList,
+  } = useGState();
 
   const appendTask = () => {
     setId(new Date().getTime());
@@ -39,15 +47,26 @@ export const App = () => {
     }
   };
 
-  const completeTask = (data) => {
+  const restMainList = (data) => {
     useAppender(
       mainList.filter((e) => e != data),
       true
     );
     setMainList([...mainList.filter((e) => e != data)]);
+  };
+
+  const completeTask = (data) => {
+    restMainList(data);
     setCompleteList((prop) => [data, ...prop]);
     useComplete(data);
   };
+
+  const deleteTask = (data) => {
+    restMainList(data);
+    setDeleteList((prop) => [data, ...prop]);
+    useDelete(data);
+  };
+
   return (
     <section className="h-screen bg-slate-500 flex justify-center items-center">
       <div className="w-max  bg-white h-max  flex-col mx-auto rounded-md relative flex p-10">
@@ -97,10 +116,11 @@ export const App = () => {
                   <AiOutlineFileDone />({completeList.length})
                 </div>
               </Link>
-              <div className="flex items-center cursor-pointer gap-3 text-red-400">
-                <AiFillDelete />
-                (1)
-              </div>
+              <Link to={"delete"}>
+                <div className="flex items-center cursor-pointer gap-3 text-red-400">
+                  <AiFillDelete />({deleteList.length})
+                </div>
+              </Link>
               <div className="flex items-center cursor-pointer gap-3 text-yellow-300">
                 <BsFillPauseFill />
                 (1)
@@ -113,6 +133,7 @@ export const App = () => {
             onClick={() => {
               setMainList([]);
               setCompleteList([]);
+              setDeleteList([]);
               localStorage.clear();
             }}
           >
@@ -154,7 +175,10 @@ export const App = () => {
                   <button className="w-5 h-5 text-2xl text-yellow-300 ">
                     <BsFillPauseFill />
                   </button>
-                  <button className="w-5 h-5 text-2xl text-red-500">
+                  <button
+                    onClick={() => deleteTask(e)}
+                    className="w-5 h-5 text-2xl text-red-500"
+                  >
                     <AiFillDelete />
                   </button>
                 </div>
@@ -165,7 +189,7 @@ export const App = () => {
         <button
           data-id="add-button"
           onClick={appendTask}
-          className="px-10 hover:bg-slate-400 hover:text-gray-900 font-semibold py-2 text-sm rounded-sm text-slate-400 absolute right-10 bottom-10 bg-slate-800 "
+          className="px-10 hover:bg-slate-400 hover:text-gray-900 font-semibold py-2 text-sm rounded-sm text-slate-400 absolute right-3 bottom-2 bg-slate-800 "
         >
           Create
         </button>

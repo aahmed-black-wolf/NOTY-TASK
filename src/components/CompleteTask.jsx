@@ -1,6 +1,4 @@
 import React from "react";
-import { AiOutlineFileDone } from "react-icons/ai";
-import { BsFillPauseFill } from "react-icons/bs";
 import { AiFillDelete } from "react-icons/ai";
 export const CompleteTask = ({ data }) => {
   return (
