@@ -12,35 +12,35 @@ TASKLLIZAI is a web application built using React with React Router, React Icons
     <th>Description</th>
   </tr>
   <tr>
-    <td>1. Add Task</td>
+    <td>Add Task</td>
     <td>Users can add new tasks to the application.</td>
   </tr>
   <tr>
-    <td>2. Delete Task with Route Page Recovery</td>
+    <td>Delete Task with Route Page Recovery</td>
     <td>Users can delete tasks, and the application provides a route page to recover deleted tasks.</td>
   </tr>
   <tr>
-    <td>3. Complete Task with Route Page Deletion</td>
+    <td>Complete Task with Route Page Deletion</td>
     <td>Users can mark tasks as completed, and the application automatically deletes completed tasks and provides a route page to view deleted tasks.</td>
   </tr>
   <tr>
-    <td>4. Delete Task</td>
+    <td>Delete Task</td>
     <td>Users can permanently delete tasks without the option to recover.</td>
   </tr>
   <tr>
-    <td>5. Clear Data and Locate All Data</td>
+    <td>Clear Data and Locate All Data</td>
     <td>Users can clear all data and locate all existing tasks.</td>
   </tr>
   <tr>
-    <td>6. Data Management with Context API and LocalStorage</td>
+    <td>Data Management with Context API and LocalStorage</td>
     <td>The application utilizes the Context API and LocalStorage API to manage task data.</td>
   </tr>
   <tr>
-    <td>7. Toast Notifications</td>
+    <td>Toast Notifications</td>
     <td>Users receive toast notifications for invalid data inputs or any errors that occur.</td>
   </tr>
   <tr>
-    <td>8. Task Ending Time Notifications</td>
+    <td>Task Ending Time Notifications</td>
     <td>Users receive notifications before 30 minutes of a task's ending time.</td>
   </tr>
 </table>
