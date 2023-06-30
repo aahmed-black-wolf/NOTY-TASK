@@ -27,4 +27,28 @@ const SortDate = (data = [], condition = "up") => {
 
   return copy_data;
 };
-export { SortDate, notify };
+const handelDate = ({ target }) => {
+  const userDate = new Date(target.value);
+  const currentDate = new Date();
+
+  if (userDate.getTime() < currentDate.getTime()) {
+    notify(`Not valid date ${target.value}`, "warn");
+    target.value = "";
+  }
+};
+
+const timeFormater = (time) => {
+  const date = new Date(time);
+  const formattedDate = date.toLocaleString("en-US", {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "numeric",
+    minute: "numeric",
+    hour12: true,
+  });
+
+  return formattedDate;
+};
+
+export { SortDate, notify, handelDate, timeFormater };

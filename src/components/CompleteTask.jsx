@@ -2,7 +2,7 @@ import React from "react";
 import { AiFillDelete } from "react-icons/ai";
 import { useComplete } from "../hooks/useComplete";
 import { useGState } from "../context/ContextState";
-import { notify } from "../utils/GMethods";
+import { notify, timeFormater } from "../utils/GMethods";
 export const CompleteTask = ({ data }) => {
   const { setCompleteList, completeList } = useGState();
   const deleteTask = (data) => {
@@ -23,7 +23,7 @@ export const CompleteTask = ({ data }) => {
       >
         <div className="flex gap-5">
           <div className="text-cyan-500 font-semibold text-lg">{e.title}</div>
-          <div className="text-cyan-500 font-semibold text-lg">{e.date}</div>
+          <div className="text-cyan-500 font-semibold text-lg">{timeFormater(e.date)}</div>
         </div>
         <div className="flex gap-5">
           <button

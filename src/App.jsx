@@ -9,19 +9,22 @@ import {
   PiArrowBendLeftDownDuotone,
   PiArrowBendLeftUpDuotone,
 } from "react-icons/pi";
+import { MdOutlineClose } from "react-icons/md";
 import { useAppender } from "./hooks/useAppender";
 import { useGState } from "./context/ContextState";
 import { useComplete } from "./hooks/useComplete";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import { useDelete } from "./hooks/useDelete";
 import { usePause } from "./hooks/usePause";
-import { SortDate, notify } from "./utils/GMethods";
+import { SortDate, handelDate, notify, timeFormater } from "./utils/GMethods";
 
 export const App = () => {
   const [id, setId] = useState(new Date().getTime());
+  const [formStatus, setFormStatus] = useState(false);
   const input_data = useRef();
-  const baseUrl = useLocation();
   const input_date = useRef();
+  const input_description = useRef();
+  const baseUrl = useLocation();
 
   const {
     mainList,
@@ -36,13 +39,18 @@ export const App = () => {
 
   const appendTask = () => {
     setId(new Date().getTime());
-    if (input_data.current.value != "" && input_date.current.value != "") {
+    if (
+      input_data.current.value != "" &&
+      input_date.current.value != "" &&
+      input_description.current.value != ""
+    ) {
       setMainList((prop) =>
         SortDate([
           {
             id,
             title: input_data.current.value,
             date: input_date.current.value,
+            description: input_description.current.value,
           },
           ...prop,
         ])
@@ -52,12 +60,14 @@ export const App = () => {
           id,
           title: input_data.current.value,
           date: input_date.current.value,
+          description: input_description.current.value,
         },
         false
       );
       setTimeout(() => {
         input_data.current.value = "";
         input_date.current.value = "";
+        input_description.current.value = "";
       }, 0);
       notify("Task Appended Successfully", "success", 2000);
       return;
@@ -94,19 +104,6 @@ export const App = () => {
     notify("Task Paused Successfully", "success", 2000);
   };
 
-  const handelDate = ({ target }) => {
-    const userDate = new Date(target.value);
-    const currentDate = new Date();
-
-    userDate.setHours(0, 0, 0, 0);
-    currentDate.setHours(0, 0, 0, 0);
-
-    if (userDate.getTime() < currentDate.getTime()) {
-      notify(`Not valid date ${target.value}`, "warn");
-      target.value = "";
-    }
-  };
-
   const formater = () => {
     setMainList([]);
     setCompleteList([]);
@@ -126,12 +123,16 @@ export const App = () => {
     return false;
   };
 
+  const createTask = () => {
+    setFormStatus(true);
+  };
+
   useEffect(() => {
     checkFormaterStatus();
   }, [mainList, completeList, pauseList]);
   return (
     <section className="h-screen bg-slate-500 flex justify-center items-center">
-      <div className="w-max  bg-white h-max  flex-col mx-auto rounded-md relative flex p-10">
+      <div className="w-1/2  bg-white h-max  flex-col mx-auto rounded-md relative flex p-10">
         <div className="text-bold flex items-center">
           <Link to={"/"} data-id="home-route">
             <h3 className="underline cursor-pointer">Home</h3>
@@ -147,10 +148,25 @@ export const App = () => {
         </div>
 
         <div className="w-full px-5 flex justify-between items-center">
-          <div className="flex gap-4 items-center w-full ">
+          <div
+            style={{
+              left: !formStatus ? "-100%" : "50%",
+              transition: "left ease .1s",
+            }}
+            className="flex fixed p-10  bg-slate-300 -translate-y-1/2 -translate-x-1/2 top-1/2 left-1/2 flex-col gap-4 items-start w-max "
+          >
+            <h1 className="text-xl  py-2 mb-5 font-medium border-b-2 border-gray-800">
+              Create new task
+            </h1>
+            <button
+              onClick={() => setFormStatus(false)}
+              className="absolute top-5 right-5 text-xl"
+            >
+              <MdOutlineClose />
+            </button>
             <input
               data-id="task-input"
-              placeholder="Create new task..."
+              placeholder="title"
               type="text"
               ref={input_data}
               disabled={baseUrl.pathname != "/"}
@@ -158,22 +174,38 @@ export const App = () => {
                 cursor: baseUrl.pathname == "/" ? "auto" : "not-allowed",
               }}
               onKeyDown={({ code }) => (code == "Enter" ? appendTask() : null)}
-              className="bg-slate-400 rounded-sm p-5 font-medium text-lg text-slate-700 placeholder:text-slate-500 outline-none border-none w-1/3 h-7"
+              className="bg-slate-400 w-full rounded-sm p-5 font-medium text-lg text-slate-700 placeholder:text-slate-500 outline-none border-none  h-7"
             />
             <input
               ref={input_date}
               onInput={handelDate}
-              type="date"
+              type="datetime-local"
               data-id="date-input"
               disabled={baseUrl.pathname != "/"}
               style={{
                 cursor: baseUrl.pathname == "/" ? "auto" : "not-allowed",
               }}
-              className="bg-slate-400 px-5 py-2 rounded-sm text-slate-700 font-bold"
+              className="bg-slate-400 w-full  px-5 py-2 rounded-sm text-slate-700 font-bold"
             />
+            <textarea
+              name=""
+              className="bg-slate-400 w-full h-28 rounded-sm p-5 font-medium text-lg text-slate-700 placeholder:text-slate-500 outline-none border-none"
+              id=""
+              cols="30"
+              rows="10"
+              ref={input_description}
+              placeholder="description..."
+            ></textarea>
+            <button
+              data-id="add-button"
+              onClick={appendTask}
+              className="px-10 hover:bg-slate-400 hover:text-gray-900 font-semibold py-2 text-sm rounded-sm text-slate-400 self-end bg-slate-800 "
+            >
+              ADD
+            </button>
           </div>
           <div>
-            <div className="flex m-10 gap-10">
+            <div className="flex my-10 gap-10">
               <div className="flex gap-3 text-lg">
                 <button
                   className="text-green-500"
@@ -236,7 +268,7 @@ export const App = () => {
                     {e.title}
                   </div>
                   <div className="text-cyan-500 font-semibold text-lg">
-                    {e.date}
+                    {timeFormater(e.date)}
                   </div>
                 </div>
                 <div className="flex gap-5">
@@ -267,7 +299,7 @@ export const App = () => {
         </div>
         <button
           data-id="add-button"
-          onClick={appendTask}
+          onClick={createTask}
           className="px-10 hover:bg-slate-400 hover:text-gray-900 font-semibold py-2 text-sm rounded-sm text-slate-400 absolute right-3 bottom-2 bg-slate-800 "
         >
           Create

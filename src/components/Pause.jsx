@@ -3,7 +3,7 @@ import { useGState } from "../context/ContextState";
 import { AiOutlineRollback } from "react-icons/ai";
 import { useAppender } from "../hooks/useAppender";
 import { usePause } from "../hooks/usePause";
-import { notify } from "../utils/GMethods";
+import { notify, timeFormater } from "../utils/GMethods";
 
 export const Pause = () => {
   const { pauseList, setMainList, mainList, setPauseList } = useGState();
@@ -27,7 +27,9 @@ export const Pause = () => {
       >
         <div className="flex gap-5">
           <div className="text-cyan-500 font-semibold text-lg">{e.title}</div>
-          <div className="text-cyan-500 font-semibold text-lg">{e.date}</div>
+          <div className="text-cyan-500 font-semibold text-lg">
+            {timeFormater(e.date)}
+          </div>
         </div>
         <div className="flex gap-5">
           <button

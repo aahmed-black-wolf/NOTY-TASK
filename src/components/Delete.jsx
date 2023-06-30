@@ -4,7 +4,7 @@ import { useGState } from "../context/ContextState";
 import { useAppender } from "../hooks/useAppender";
 import { useDelete } from "../hooks/useDelete";
 import { toast } from "react-toastify";
-import { notify } from "../utils/GMethods";
+import { notify, timeFormater } from "../utils/GMethods";
 
 export const Delete = () => {
   const { mainList, setMainList, deleteList, setDeleteList } = useGState();
@@ -29,7 +29,7 @@ export const Delete = () => {
       >
         <div className="flex gap-5">
           <div className="text-cyan-500 font-semibold text-lg">{e.title}</div>
-          <div className="text-cyan-500 font-semibold text-lg">{e.date}</div>
+          <div className="text-cyan-500 font-semibold text-lg">{timeFormater(e.date)}</div>
         </div>
         <div className="flex gap-5">
           <button
