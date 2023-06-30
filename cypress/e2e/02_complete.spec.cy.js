@@ -3,13 +3,14 @@
 describe("Complete", () => {
   it.skip("Test Complete Appneder Task", () => {
     let iterator = 0;
+    localStorage.clear();
 
     for (let index = 1; index < 11; index++) {
       iterator++;
       //   Test Phase (1) - Append new Task & Confirm Complete Task
       cy.visit(Cypress.env().baseUrl);
       cy.get("[data-id='task-input']").type("First-Task");
-      cy.get("[data-id='date-input']").type("2023-06-15");
+      cy.get("[data-id='date-input']").type("2023-07-30");
       cy.get("[data-id='add-button']").click();
       cy.get(".todo-box").should("have.length", 1);
 
@@ -32,7 +33,7 @@ describe("Complete", () => {
     let counter_of_test = 10;
     for (let index = 0; index < counter_of_test; index++) {
       cy.get("[data-id='task-input']").type(`Task-${index + 1}`);
-      cy.get("[data-id='date-input']").type("2023-06-15");
+      cy.get("[data-id='date-input']").type("2023-07-30");
       cy.get("[data-id='add-button']").click();
     }
     cy.get(".todo-box").should("have.length", counter_of_test);

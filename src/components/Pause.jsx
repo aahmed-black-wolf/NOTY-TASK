@@ -3,6 +3,7 @@ import { useGState } from "../context/ContextState";
 import { AiOutlineRollback } from "react-icons/ai";
 import { useAppender } from "../hooks/useAppender";
 import { usePause } from "../hooks/usePause";
+import { notify } from "../utils/GMethods";
 
 export const Pause = () => {
   const { pauseList, setMainList, mainList, setPauseList } = useGState();
@@ -15,6 +16,7 @@ export const Pause = () => {
       true
     );
     setPauseList([...pauseList.filter((e) => e != data)]);
+    notify("Task recovered successfully", "info");
   };
   return (
     pauseList &&

@@ -1,9 +1,10 @@
 /// <reference types="Cypress"/>
 describe("Delete Operations", () => {
   it("Append & Delete Task", () => {
+    localStorage.clear();
     // Append 9 Task
     cy.visit(Cypress.env().baseUrl);
-    for (let index = 1; index < 10; index++) {
+    for (let index = 7; index < 9; index++) {
       cy.gtId("task-input").type(`Task-${index}`);
       cy.gtId("date-input").type(`2023-0${index}-0${index}`);
       cy.gtId("add-button").click();
@@ -20,11 +21,11 @@ describe("Delete Operations", () => {
       expect(win.localStorage.getItem("todo-data")).to.equal(null);
       expect(
         JSON.parse(win.localStorage.getItem("delete-data")).length
-      ).to.equal(9);
+      ).to.equal(2);
     });
     // Test Recover Future
     cy.gtId("delete-route").click();
-    cy.get(".todo-box").should("have.length", 9);
+    cy.get(".todo-box").should("have.length", 2);
     cy.gtId("recover-button").each(($button) => {
       cy.wrap($button).click();
     });
@@ -33,11 +34,11 @@ describe("Delete Operations", () => {
     cy.window().then((win) => {
       expect(win.localStorage.getItem("delete-data")).to.equal(null);
       expect(JSON.parse(win.localStorage.getItem("todo-data")).length).to.equal(
-        9
+        2
       );
     });
     cy.gtId("home-route").click();
-    cy.get(".todo-box").should("have.length", 9);
+    cy.get(".todo-box").should("have.length", 2);
 
     cy.gtId("clear-button").click();
     cy.window().then((win) => {

@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
+import { SortDate } from "../utils/GMethods";
 
 const GState = createContext();
 
@@ -27,6 +28,8 @@ export const ContextState = ({ children }) => {
     complete_task_data ? setCompleteList(complete_task_data) : null;
     delete_task_data ? setDeleteList(delete_task_data) : null;
     pause_task_data ? setPauseList(pause_task_data) : null;
+
+    setMainList(SortDate(todo_data));
   }, []);
 
   return (

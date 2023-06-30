@@ -2,7 +2,8 @@
 
 describe("TODO Operations", () => {
   it("APPEND New Task", () => {
-    const validDate = "2023-06-29";
+    localStorage.clear();
+    const validDate = "2023-06-30";
     cy.visit(" http://127.0.0.1:3000/");
 
     // Logical || Normal Phase

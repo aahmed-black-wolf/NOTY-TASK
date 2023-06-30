@@ -3,6 +3,8 @@ import { AiOutlineRollback } from "react-icons/ai";
 import { useGState } from "../context/ContextState";
 import { useAppender } from "../hooks/useAppender";
 import { useDelete } from "../hooks/useDelete";
+import { toast } from "react-toastify";
+import { notify } from "../utils/GMethods";
 
 export const Delete = () => {
   const { mainList, setMainList, deleteList, setDeleteList } = useGState();
@@ -16,6 +18,7 @@ export const Delete = () => {
       true
     );
     setDeleteList([...deleteList.filter((e) => e != data)]);
+    notify("Task recovered !", "info", 2000);
   };
   return (
     deleteList &&

@@ -1,22 +1,28 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { AiOutlineFileDone } from "react-icons/ai";
 import { BsFillPauseFill } from "react-icons/bs";
 import { AiFillDelete } from "react-icons/ai";
 
 import { FcDeleteDatabase } from "react-icons/fc";
 import { MdArrowRight } from "react-icons/md";
+import {
+  PiArrowBendLeftDownDuotone,
+  PiArrowBendLeftUpDuotone,
+} from "react-icons/pi";
 import { useAppender } from "./hooks/useAppender";
 import { useGState } from "./context/ContextState";
 import { useComplete } from "./hooks/useComplete";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import { useDelete } from "./hooks/useDelete";
 import { usePause } from "./hooks/usePause";
+import { SortDate, notify } from "./utils/GMethods";
 
 export const App = () => {
   const [id, setId] = useState(new Date().getTime());
   const input_data = useRef();
   const baseUrl = useLocation();
   const input_date = useRef();
+
   const {
     mainList,
     setMainList,
@@ -31,10 +37,16 @@ export const App = () => {
   const appendTask = () => {
     setId(new Date().getTime());
     if (input_data.current.value != "" && input_date.current.value != "") {
-      setMainList((prop) => [
-        { id, title: input_data.current.value, date: input_date.current.value },
-        ...prop,
-      ]);
+      setMainList((prop) =>
+        SortDate([
+          {
+            id,
+            title: input_data.current.value,
+            date: input_date.current.value,
+          },
+          ...prop,
+        ])
+      );
       useAppender(
         {
           id,
@@ -47,7 +59,10 @@ export const App = () => {
         input_data.current.value = "";
         input_date.current.value = "";
       }, 0);
+      notify("Task Appended Successfully", "success", 2000);
+      return;
     }
+    notify(`Please Enter valid Data`, "warn");
   };
 
   const restMainList = (data) => {
@@ -62,19 +77,58 @@ export const App = () => {
     restMainList(data);
     setCompleteList((prop) => [data, ...prop]);
     useComplete(data);
+    notify("Task Completed Successfully", "success", 2000);
   };
 
   const deleteTask = (data) => {
     restMainList(data);
     setDeleteList((prop) => [data, ...prop]);
     useDelete(data);
+    notify("Task Deleted Successfully", "success", 2000);
   };
 
   const pauseTask = (data) => {
     restMainList(data);
     setPauseList((prop) => [data, ...prop]);
     usePause(data);
+    notify("Task Paused Successfully", "success", 2000);
   };
+
+  const handelDate = ({ target }) => {
+    const userDate = new Date(target.value);
+    const currentDate = new Date();
+
+    userDate.setHours(0, 0, 0, 0);
+    currentDate.setHours(0, 0, 0, 0);
+
+    if (userDate.getTime() < currentDate.getTime()) {
+      notify(`Not valid date ${target.value}`, "warn");
+      target.value = "";
+    }
+  };
+
+  const formater = () => {
+    setMainList([]);
+    setCompleteList([]);
+    setDeleteList([]);
+    notify("Data deleted successfully", "info");
+    localStorage.clear();
+  };
+
+  const checkFormaterStatus = () => {
+    if (
+      mainList.length == 0 &&
+      completeList.length == 0 &&
+      pauseList.length == 0
+    ) {
+      return true;
+    }
+    return false;
+  };
+
+  useEffect(() => {
+    checkFormaterStatus();
+  }, [mainList, completeList, pauseList]);
   return (
     <section className="h-screen bg-slate-500 flex justify-center items-center">
       <div className="w-max  bg-white h-max  flex-col mx-auto rounded-md relative flex p-10">
@@ -108,6 +162,7 @@ export const App = () => {
             />
             <input
               ref={input_date}
+              onInput={handelDate}
               type="date"
               data-id="date-input"
               disabled={baseUrl.pathname != "/"}
@@ -119,6 +174,20 @@ export const App = () => {
           </div>
           <div>
             <div className="flex m-10 gap-10">
+              <div className="flex gap-3 text-lg">
+                <button
+                  className="text-green-500"
+                  onClick={() => setMainList(SortDate(mainList))}
+                >
+                  <PiArrowBendLeftUpDuotone />
+                </button>
+                <button
+                  className="text-red-400"
+                  onClick={() => setMainList(SortDate(mainList, "down"))}
+                >
+                  <PiArrowBendLeftDownDuotone />
+                </button>
+              </div>
               <Link to={"complete"} data-id="complete-route">
                 <div className="flex items-center cursor-pointer gap-3 text-green-500">
                   <AiOutlineFileDone />({completeList.length})
@@ -139,12 +208,9 @@ export const App = () => {
           <button
             data-id="clear-button"
             className="text-3xl"
-            onClick={() => {
-              setMainList([]);
-              setCompleteList([]);
-              setDeleteList([]);
-              localStorage.clear();
-            }}
+            onClick={formater}
+            disabled={checkFormaterStatus()}
+            style={{ opacity: checkFormaterStatus() ? ".4" : "1" }}
           >
             <FcDeleteDatabase />
           </button>

@@ -2,6 +2,7 @@ import React from "react";
 import { AiFillDelete } from "react-icons/ai";
 import { useComplete } from "../hooks/useComplete";
 import { useGState } from "../context/ContextState";
+import { notify } from "../utils/GMethods";
 export const CompleteTask = ({ data }) => {
   const { setCompleteList, completeList } = useGState();
   const deleteTask = (data) => {
@@ -10,6 +11,7 @@ export const CompleteTask = ({ data }) => {
       true
     );
     setCompleteList(completeList.filter((e) => data != e));
+    notify("Task Deleted successfully", "info");
   };
 
   return (
