@@ -153,7 +153,7 @@ export const App = () => {
               left: !formStatus ? "-100%" : "50%",
               transition: "left ease .1s",
             }}
-            className="flex fixed p-10  bg-slate-300 -translate-y-1/2 -translate-x-1/2 top-1/2 left-1/2 flex-col gap-4 items-start w-max "
+            className="flex fixed p-10 z-10 bg-slate-300 -translate-y-1/2 -translate-x-1/2 top-1/2 left-1/2 flex-col gap-4 items-start w-max "
           >
             <h1 className="text-xl  py-2 mb-5 font-medium border-b-2 border-gray-800">
               Create new task
@@ -261,14 +261,20 @@ export const App = () => {
             mainList.map((e) => (
               <div
                 key={e.id}
-                className="todo-box w-full rounded-md  bg-slate-800 h-16 flex items-center p-8 justify-between"
+                className="todo-box w-full   group relative rounded-md  bg-slate-800 h-16 flex items-center p-8 justify-between"
               >
-                <div className="flex gap-5">
+                <div className="flex gap-5 ">
                   <div className="text-cyan-500 font-semibold text-lg">
                     {e.title}
                   </div>
                   <div className="text-cyan-500 font-semibold text-lg">
                     {timeFormater(e.date)}
+                  </div>
+                  <div
+                    style={{ transition: "all ease .3s" }}
+                    className="absolute z-10 group-hover:opacity-100 text-gray-900 font-medium text-lg opacity-0 group-hover:scale-100 scale-0 top-16 left-[0px] rounded-md rounded-t-none w-full p-5   bg-slate-400"
+                  >
+                    {e.description}
                   </div>
                 </div>
                 <div className="flex gap-5">
