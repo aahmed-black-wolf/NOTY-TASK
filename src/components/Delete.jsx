@@ -40,8 +40,8 @@ export const Delete = () => {
               transition: "all ease .3s",
               wordWrap: "break-word",
             }}
-            className="absolute  h-max w-full z-10 group-hover:opacity-100 text-gray-900 font-medium text-sm sm:text-lg opacity-0 group-hover:scale-100 scale-0 top-16 left-[0px] rounded-md rounded-t-none  p-5 bg-white border-2 border-t-0 border-cyan-500"
-          >
+            className="absolute  h-max w-full z-10 group-hover:opacity-100 text-gray-900 font-medium text-sm sm:text-lg opacity-0 group-hover:scale-100 scale-0 top-0 left-[0px] rounded-md rounded-t-none  p-5 bg-white border-2  border-cyan-500"
+            >
             {e.description}
           </div>
         </div>
@@ -49,7 +49,7 @@ export const Delete = () => {
           <button
             data-id="recover-button"
             onClick={() => reBack(e)}
-            className="w-5 h-5 text-lg sm:text-2xl text-red-500"
+            className="w-5 h-5 text-lg sm:text-2xl text-red-500 z-30"
           >
             <AiOutlineRollback />
           </button>
