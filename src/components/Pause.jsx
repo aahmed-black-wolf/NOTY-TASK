@@ -45,6 +45,7 @@ export const Pause = () => {
         </div>
         <div className="flex gap-3 sm:gap-5">
           <button
+            data-id="recover-button"
             onClick={() => reBack(e)}
             className="w-5 h-5 text-lg sm:text-2xl text-yellow-300 z-30"
           >

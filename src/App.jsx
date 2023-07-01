@@ -161,11 +161,12 @@ export const App = () => {
             <button
               onClick={() => setFormStatus(false)}
               className="absolute top-5 right-5 text-xl"
+              data-id="form-close-button"
             >
               <MdOutlineClose />
             </button>
             <input
-              data-id="task-input"
+              data-id="title-input"
               placeholder="title"
               type="text"
               ref={input_data}
@@ -191,6 +192,7 @@ export const App = () => {
               name=""
               className="bg-slate-400 w-full h-28 rounded-sm p-5 font-medium text-lg text-slate-700 placeholder:text-slate-500 outline-none border-none"
               id=""
+              data-id="description-input"
               cols="30"
               rows="10"
               disabled={baseUrl.pathname != "/"}
@@ -231,7 +233,7 @@ export const App = () => {
                   <AiFillDelete />({deleteList.length})
                 </div>
               </Link>
-              <Link to={"pause"}>
+              <Link to={"pause"} data-id="pause-route">
                 <div className="flex items-center cursor-pointer gap-3 text-yellow-300">
                   <BsFillPauseFill />({pauseList.length})
                 </div>
@@ -261,7 +263,7 @@ export const App = () => {
             mainList.map((e) => (
               <div
                 key={e.id}
-                className="todo-box sm:h-16   p-5 sm:p-8 w-full group relative rounded-md  bg-slate-800 flex items-center  justify-between"
+                className="todo-box sm:h-16 p-5 sm:p-8 w-full group relative rounded-md  bg-slate-800 flex items-center  justify-between"
               >
                 <div className="flex gap-3 sm:gap-5 ">
                   <div className="text-cyan-500 font-semibold text-sm sm:text-lg">
@@ -276,7 +278,7 @@ export const App = () => {
                       transition: "all ease .3s",
                       wordWrap: "break-word",
                     }}
-                    className="absolute  h-max w-full z-10 group-hover:opacity-100 text-gray-900 font-medium text-sm sm:text-lg opacity-0 group-hover:scale-100 scale-0 top-0 left-[0px] rounded-md rounded-t-none  p-5 bg-white border-2  border-cyan-500"
+                    className="absolute description h-max w-full z-10 group-hover:opacity-100 text-gray-900 font-medium text-sm sm:text-lg opacity-0 group-hover:scale-100 scale-0 top-0 left-[0px] rounded-md rounded-t-none  p-5 bg-white border-2  border-cyan-500"
                   >
                     {e.description}
                   </div>
@@ -291,7 +293,8 @@ export const App = () => {
                   </button>
                   <button
                     onClick={() => pauseTask(e)}
-                    className="w-5 h-5 text-md sm:text-2xl text-yellow-300 "
+                    className="w-5 h-5 text-md sm:text-2xl text-yellow-300"
+                    data-id="pause-button"
                   >
                     <BsFillPauseFill />
                   </button>
@@ -308,7 +311,7 @@ export const App = () => {
           <Outlet />
         </div>
         <button
-          data-id="add-button"
+          data-id="create-button"
           disabled={baseUrl.pathname != "/"}
           style={{
             opacity: baseUrl.pathname != "/" ? ".5" : "1",

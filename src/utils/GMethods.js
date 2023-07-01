@@ -2,7 +2,7 @@ import { toast } from "react-toastify";
 
 const notify = (mess, type, dir = 3000) =>
   toast[type](mess, {
-    position: "top-right",
+    position: "bottom-left",
     autoClose: dir,
     hideProgressBar: false,
     closeOnClick: true,
