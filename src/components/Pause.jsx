@@ -23,18 +23,30 @@ export const Pause = () => {
     pauseList?.map((e) => (
       <div
         key={e.id}
-        className="todo-box w-full rounded-md  bg-slate-800 h-16 flex items-center p-8 justify-between"
+        className="todo-box group p-5 sm:p-8 w-full group relative rounded-md  bg-slate-800 h-16 flex items-center  justify-between"
       >
-        <div className="flex gap-5">
-          <div className="text-cyan-500 font-semibold text-lg">{e.title}</div>
-          <div className="text-cyan-500 font-semibold text-lg">
+        <div className="flex gap-3 sm:gap-5">
+          <div className="text-cyan-500 font-semibold text-sm sm:text-lg">
+            {e.title}
+          </div>
+          <div className="text-yellow-300">|</div>
+          <div className="text-cyan-500 font-semibold text-sm sm:text-lg">
             {timeFormater(e.date)}
           </div>
+          <div
+            style={{
+              transition: "all ease .3s",
+              wordWrap: "break-word",
+            }}
+            className="absolute  h-max w-full z-10 group-hover:opacity-100 text-gray-900 font-medium text-sm sm:text-lg opacity-0 group-hover:scale-100 scale-0 top-16 left-[0px] rounded-md rounded-t-none  p-5 bg-white border-2 border-t-0 border-cyan-500"
+          >
+            {e.description}
+          </div>
         </div>
-        <div className="flex gap-5">
+        <div className="flex gap-3 sm:gap-5">
           <button
             onClick={() => reBack(e)}
-            className="w-5 h-5 text-2xl text-yellow-300"
+            className="w-5 h-5 text-lg sm:text-2xl text-yellow-300"
           >
             <AiOutlineRollback />
           </button>

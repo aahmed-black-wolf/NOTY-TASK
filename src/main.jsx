@@ -1,5 +1,6 @@
 import ReactDOM from "react-dom/client";
 import "./styles/index.css";
+import "./styles/main.css";
 import { ContextState } from "./context/ContextState";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";

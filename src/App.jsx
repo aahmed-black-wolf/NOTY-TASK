@@ -132,7 +132,7 @@ export const App = () => {
   }, [mainList, completeList, pauseList]);
   return (
     <section className="h-screen bg-slate-500 flex justify-center items-center">
-      <div className="w-1/2  bg-white h-max  flex-col mx-auto rounded-md relative flex p-10">
+      <div className="w-full p-5 sm:p-10 rounded-none h-full sm:rounded-md sm:h-max sm:w-10/12  bg-white   flex-col mx-auto  relative flex ">
         <div className="text-bold flex items-center">
           <Link to={"/"} data-id="home-route">
             <h3 className="underline cursor-pointer">Home</h3>
@@ -147,15 +147,15 @@ export const App = () => {
           </Link>
         </div>
 
-        <div className="w-full px-5 flex justify-between items-center">
+        <div className="w-full sm:px-5 flex justify-between items-center">
           <div
             style={{
-              left: !formStatus ? "-100%" : "50%",
+              left: !formStatus ? "-100%" : "",
               transition: "left ease .1s",
             }}
-            className="flex fixed p-10 z-10 bg-slate-300 -translate-y-1/2 -translate-x-1/2 top-1/2 left-1/2 flex-col gap-4 items-start w-max "
+            className="flex fixed w-10/12  px-8 py-5 rounded-sm z-20 bg-gray-600 -translate-y-1/2 -translate-x-1/2 top-1/2 left-1/2 flex-col gap-4 items-start sm:w-max "
           >
-            <h1 className="text-xl  py-2 mb-5 font-medium border-b-2 border-gray-800">
+            <h1 className="text-xl text-gray-100  py-2 mb-5 font-medium border-b-2 border-gray-500">
               Create new task
             </h1>
             <button
@@ -193,19 +193,20 @@ export const App = () => {
               id=""
               cols="30"
               rows="10"
+              disabled={baseUrl.pathname != "/"}
               ref={input_description}
               placeholder="description..."
             ></textarea>
             <button
               data-id="add-button"
               onClick={appendTask}
-              className="px-10 hover:bg-slate-400 hover:text-gray-900 font-semibold py-2 text-sm rounded-sm text-slate-400 self-end bg-slate-800 "
+              className="px-10  hover:bg-slate-400 hover:text-gray-900 font-semibold py-2 text-sm rounded-sm text-gray-100 self-end bg-slate-800 "
             >
               ADD
             </button>
           </div>
           <div>
-            <div className="flex my-10 gap-10">
+            <div className="flex my-10 gap-6 sm:gap-10">
               <div className="flex gap-3 text-lg">
                 <button
                   className="text-green-500"
@@ -247,53 +248,56 @@ export const App = () => {
             <FcDeleteDatabase />
           </button>
         </div>
-
-        <div className="h-96 w-full p-4 flex flex-col gap-5 overflow-auto">
-          <div className="flex px-3 w-full justify-between">
-            <div className="flex justify-between w-1/6">
-              <h2 className="text-lg font-bold">Name</h2>
-              <h2 className="text-lg font-bold">|</h2>
-              <h2 className="text-lg font-bold">Date</h2>
-            </div>
+        <div className="flex px-1 py-4 sm:px-3 w-full ">
+          <div className="flex gap-3 w-1/6">
+            <h2 className="text-sm  sm:text-lg  font-bold">Name</h2>
+            <h2 className="text-sm  sm:text-lg  font-bold">|</h2>
+            <h2 className="text-sm  sm:text-lg  font-bold">Date</h2>
           </div>
+        </div>
+        <div className="h-96 w-full sm:p-4 flex flex-col gap-5 overflow-auto">
           {mainList &&
             baseUrl.pathname == "/" &&
             mainList.map((e) => (
               <div
                 key={e.id}
-                className="todo-box w-full   group relative rounded-md  bg-slate-800 h-16 flex items-center p-8 justify-between"
+                className="todo-box sm:h-16   p-5 sm:p-8 w-full group relative rounded-md  bg-slate-800 flex items-center  justify-between"
               >
-                <div className="flex gap-5 ">
-                  <div className="text-cyan-500 font-semibold text-lg">
+                <div className="flex gap-3 sm:gap-5 ">
+                  <div className="text-cyan-500 font-semibold text-sm sm:text-lg">
                     {e.title}
                   </div>
-                  <div className="text-cyan-500 font-semibold text-lg">
+                  <div className="text-yellow-300">|</div>
+                  <div className="text-cyan-500 font-semibold text-sm sm:text-lg">
                     {timeFormater(e.date)}
                   </div>
                   <div
-                    style={{ transition: "all ease .3s" }}
-                    className="absolute z-10 group-hover:opacity-100 text-gray-900 font-medium text-lg opacity-0 group-hover:scale-100 scale-0 top-16 left-[0px] rounded-md rounded-t-none w-full p-5   bg-slate-400"
+                    style={{
+                      transition: "all ease .3s",
+                      wordWrap: "break-word",
+                    }}
+                    className="absolute  h-max w-full z-10 group-hover:opacity-100 text-gray-900 font-medium text-sm sm:text-lg opacity-0 group-hover:scale-100 scale-0 top-16 left-[0px] rounded-md rounded-t-none  p-5 bg-white border-2 border-t-0 border-cyan-500"
                   >
                     {e.description}
                   </div>
                 </div>
-                <div className="flex gap-5">
+                <div className="flex gap-3 sm:gap-5">
                   <button
                     onClick={() => completeTask(e)}
                     data-id="complete-button"
-                    className="w-5 h-5 text-2xl text-green-500"
+                    className="w-5 h-5 text-md sm:text-2xl text-green-500"
                   >
                     <AiOutlineFileDone />
                   </button>
                   <button
                     onClick={() => pauseTask(e)}
-                    className="w-5 h-5 text-2xl text-yellow-300 "
+                    className="w-5 h-5 text-md sm:text-2xl text-yellow-300 "
                   >
                     <BsFillPauseFill />
                   </button>
                   <button
                     onClick={() => deleteTask(e)}
-                    className="w-5 h-5 text-2xl text-red-500"
+                    className="w-5 h-5 text-md sm:text-2xl text-red-500"
                     data-id="deleter-button"
                   >
                     <AiFillDelete />
@@ -305,8 +309,18 @@ export const App = () => {
         </div>
         <button
           data-id="add-button"
+          disabled={baseUrl.pathname != "/"}
+          style={{
+            opacity: baseUrl.pathname != "/" ? ".5" : "1",
+            userSelect: baseUrl.pathname != "/" ? "none" : "all",
+            ...(baseUrl.pathname !== "/" && {
+              backgroundColor: "#000",
+              color: "#fff",
+              cursor: "default",
+            }),
+          }}
           onClick={createTask}
-          className="px-10 hover:bg-slate-400 hover:text-gray-900 font-semibold py-2 text-sm rounded-sm text-slate-400 absolute right-3 bottom-2 bg-slate-800 "
+          className="px-10 select-none hover:bg-slate-400 hover:text-gray-900 font-semibold py-2 text-sm rounded-sm text-slate-400 absolute right-3 bottom-2 bg-slate-800 "
         >
           Create
         </button>
